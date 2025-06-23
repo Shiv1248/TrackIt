@@ -1,4 +1,4 @@
-package com.shivansh.trackit.dto;
+package com.shivansh.trackIt.dto;
 
 import lombok.*;
 

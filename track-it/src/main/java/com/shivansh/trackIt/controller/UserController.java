@@ -1,13 +1,15 @@
-package com.shivansh.trackit.controller;
+package com.shivansh.trackIt.controller;
 
-import com.shivansh.trackit.dto.*;
-import com.shivansh.trackit.entity.User;
-import com.shivansh.trackit.security.JwtUtil;
-import com.shivansh.trackit.service.UserService;
 import org.springframework.security.authentication.*;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
+
+import com.shivansh.trackIt.dto.*;
+import com.shivansh.trackIt.entity.User;
+import com.shivansh.trackIt.security.JwtUtil;
+import com.shivansh.trackIt.service.UserService;
+
 import org.springframework.http.ResponseEntity;
 import jakarta.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;

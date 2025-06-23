@@ -1,10 +1,10 @@
-package com.shivansh.trackit;
+package com.shivansh.trackIt;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TrackitApplicationTests {
+class TrackItApplicationTests {
 
 	@Test
 	void contextLoads() {

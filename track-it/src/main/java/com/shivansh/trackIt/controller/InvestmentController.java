@@ -1,13 +1,14 @@
-package com.shivansh.trackit.controller;
-
-import com.shivansh.trackit.service.InvestmentService;
-import com.shivansh.trackit.entity.Investment;
-import com.shivansh.trackit.entity.User;
-import com.shivansh.trackit.service.UserService;
+package com.shivansh.trackIt.controller;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.shivansh.trackIt.entity.Investment;
+import com.shivansh.trackIt.entity.User;
+import com.shivansh.trackIt.service.InvestmentService;
+import com.shivansh.trackIt.service.UserService;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;

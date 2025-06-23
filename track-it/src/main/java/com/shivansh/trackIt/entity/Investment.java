@@ -1,4 +1,4 @@
-package com.shivansh.trackit.entity;
+package com.shivansh.trackIt.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;

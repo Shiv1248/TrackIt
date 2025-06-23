@@ -1,7 +1,5 @@
-package com.shivansh.trackit.security;
+package com.shivansh.trackIt.security;
 
-import com.shivansh.trackit.security.JwtAuthFilter;
-import com.shivansh.trackit.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,6 +12,9 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import com.shivansh.trackIt.security.JwtAuthFilter;
+import com.shivansh.trackIt.service.UserService;
 
 @Configuration
 @EnableWebSecurity

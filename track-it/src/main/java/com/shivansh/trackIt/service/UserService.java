@@ -1,10 +1,11 @@
-package com.shivansh.trackit.service;
+package com.shivansh.trackIt.service;
 
-import com.shivansh.trackit.entity.User;
-import com.shivansh.trackit.repository.UserRepository;
 import org.springframework.security.core.userdetails.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import com.shivansh.trackIt.entity.User;
+import com.shivansh.trackIt.repository.UserRepository;
 
 @Service
 public class UserService implements UserDetailsService {

@@ -1,0 +1,48 @@
+<mat-toolbar color="primary" class="navbar">
+    <div class="navbar-content" fxLayout="row" fxLayoutAlign="space-between center">
+      <div class="navbar-left" fxLayout="row" fxLayoutAlign="start center">
+        <button mat-icon-button (click)="onToggleSidenav()" aria-label="Toggle navigation">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <div class="logo" fxLayout="row" fxLayoutAlign="center center">
+          <mat-icon class="logo-icon">account_balance_wallet</mat-icon>
+          <span class="logo-text">TrackIt</span>
+        </div>
+      </div>
+      
+      <div class="navbar-right" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="16px">
+        <span class="welcome-text" fxHide.xs>
+          Welcome, {{ currentUser?.firstName || 'User' }}!
+        </span>
+        
+        <button mat-icon-button [matMenuTriggerFor]="profileMenu" aria-label="User menu">
+          <div class="user-avatar">
+            {{ getUserInitials() }}
+          </div>
+        </button>
+        
+        <mat-menu #profileMenu="matMenu">
+          <div class="profile-header" mat-menu-item disabled>
+            <div class="profile-info">
+              <div class="user-name">{{ currentUser?.firstName }} {{ currentUser?.lastName }}</div>
+              <div class="user-email">{{ currentUser?.email }}</div>
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+          <button mat-menu-item (click)="navigateToProfile()">
+            <mat-icon>person</mat-icon>
+            <span>Profile</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>settings</mat-icon>
+            <span>Settings</span>
+          </button>
+          <mat-divider></mat-divider>
+          <button mat-menu-item (click)="logout()">
+            <mat-icon>logout</mat-icon>
+            <span>Logout</span>
+          </button>
+        </mat-menu>
+      </div>
+    </div>
+  </mat-toolbar>

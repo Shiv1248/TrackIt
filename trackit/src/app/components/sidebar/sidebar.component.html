@@ -1,0 +1,109 @@
+<div class="sidebar-content">
+    <!-- User Profile Section -->
+    <div class="sidebar-header">
+      <div class="user-profile" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="12px">
+        <div class="user-avatar">
+          {{ getUserInitials() }}
+        </div>
+        <div class="user-info" fxFlex>
+          <div class="user-name">{{ getUserName() }}</div>
+          <div class="user-email">{{ currentUser?.email }}</div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Navigation Menu -->
+    <div class="sidebar-nav" fxFlex>
+      <div *ngFor="let section of menuSections; trackBy: trackByMenuSection" class="menu-section">
+        <div class="section-header" *ngIf="hasAvailableItems(section)">
+          <h4 class="section-title">{{ section.title }}</h4>
+          <span class="section-count">{{ getSectionItemCount(section) }}</span>
+        </div>
+        
+        <mat-nav-list class="menu-list">
+          <mat-list-item 
+            *ngFor="let item of section.items; trackBy: trackByMenuItem"
+            [class.active]="item.active"
+            [class.disabled]="item.comingSoon"
+            [class.restricted]="item.requiredRole && !hasRequiredRole(item.requiredRole)"
+            (click)="navigateTo(item)"
+            (keydown)="onKeyDown($event, item)"
+            [matTooltip]="getMenuItemTooltip(item)"
+            matTooltipPosition="right"
+            class="menu-item"
+            tabindex="0"
+            role="button"
+            [attr.aria-label]="item.label">
+            
+            <mat-icon matListIcon 
+                      [class.active-icon]="item.active"
+                      [class.disabled-icon]="item.comingSoon">
+              {{ item.icon }}
+            </mat-icon>
+            
+            <span matLine class="menu-label">{{ item.label }}</span>
+            
+            <!-- Badge for notifications or counts -->
+            <span *ngIf="item.badge && item.badge > 0" 
+                  class="menu-badge"
+                  [attr.aria-label]="item.badge + ' notifications'">
+              {{ item.badge > 99 ? '99+' : item.badge }}
+            </span>
+            
+            <!-- Coming Soon Chip -->
+            <mat-chip *ngIf="item.comingSoon" 
+                      class="coming-soon-chip" 
+                      color="accent"
+                      [attr.aria-label]="'Coming soon'">
+              Coming Soon
+            </mat-chip>
+            
+            <!-- Restricted Access Icon -->
+            <mat-icon *ngIf="item.requiredRole && !hasRequiredRole(item.requiredRole)"
+                      class="restricted-icon"
+                      matTooltip="Requires {{ item.requiredRole }} role">
+              lock
+            </mat-icon>
+          </mat-list-item>
+        </mat-nav-list>
+      </div>
+    </div>
+  
+    <!-- Sidebar Footer -->
+    <div class="sidebar-footer">
+      <mat-divider></mat-divider>
+      
+      <!-- Quick Actions -->
+      <div class="quick-actions" fxLayout="row" fxLayoutAlign="space-around center">
+        <button mat-icon-button 
+                matTooltip="Add Expense" 
+                (click)="navigateTo({id: 'add-expense', icon: 'add', label: 'Add Expense', route: '/dashboard', active: false, comingSoon: false})"
+                class="quick-action-btn">
+          <mat-icon>add_circle</mat-icon>
+        </button>
+        
+        <button mat-icon-button 
+                matTooltip="Search" 
+                (click)="showComingSoonMessage('Search')"
+                class="quick-action-btn">
+          <mat-icon>search</mat-icon>
+        </button>
+        
+        <button mat-icon-button 
+                matTooltip="Notifications" 
+                (click)="showComingSoonMessage('Notifications')"
+                class="quick-action-btn">
+        </button>
+      </div>
+      
+      <!-- App Info -->
+      <div class="app-info">
+        <div class="app-logo" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px">
+          <mat-icon class="logo-icon">account_balance_wallet</mat-icon>
+          <span class="app-name">TrackIt</span>
+        </div>
+        <p class="version">v{{ getAppVersion() }}</p>
+        <p class="copyright">© {{ getCurrentYear() }} TrackIt</p>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,92 @@
+.create-expense-dialog {
+    width: 100%;
+  }
+  
+  .expense-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-width: 400px;
+    padding: 1rem 0;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .form-row .mat-form-field {
+    flex: 1;
+  }
+  
+  .preview-card {
+    margin-top: 1rem;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+  }
+  
+  .preview-content {
+    font-size: 0.9rem;
+  }
+  
+  .preview-title {
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .preview-amount {
+    font-weight: 600;
+    color: #1976d2;
+    font-size: 1.1rem;
+  }
+  
+  .preview-icon {
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  .preview-status {
+    font-size: 0.7rem;
+  }
+  
+  .preview-description {
+    color: #666;
+    font-style: italic;
+    padding: 0.5rem;
+    background-color: white;
+    border-radius: 4px;
+    border-left: 3px solid #1976d2;
+  }
+  
+  .dialog-actions {
+    padding: 1rem 0;
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+  }
+  
+  mat-dialog-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #333;
+  }
+  
+  @media (max-width: 480px) {
+    .expense-form {
+      min-width: 300px;
+    }
+    
+    .form-row {
+      flex-direction: column;
+      gap: 0;
+    }
+    
+    .dialog-actions {
+      flex-direction: column;
+    }
+  }

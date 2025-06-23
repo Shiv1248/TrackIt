@@ -1,9 +1,10 @@
-package com.shivansh.trackit.service;
-
-import com.shivansh.trackit.repository.InvestmentRepository;
-import com.shivansh.trackit.entity.Investment;
+package com.shivansh.trackIt.service;
 
 import org.springframework.stereotype.Service;
+
+import com.shivansh.trackIt.entity.Investment;
+import com.shivansh.trackIt.repository.InvestmentRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;

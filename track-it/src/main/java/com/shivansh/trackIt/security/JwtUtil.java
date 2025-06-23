@@ -1,4 +1,4 @@
-package com.shivansh.trackit.security;
+package com.shivansh.trackIt.security;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;

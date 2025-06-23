@@ -1,0 +1,449 @@
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+/* Global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  line-height: 1.6;
+}
+
+html, body {
+  height: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+/* Utility classes */
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.gap-1 {
+  gap: 1rem;
+}
+
+.gap-2 {
+  gap: 2rem;
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+.mb-2 {
+  margin-bottom: 2rem;
+}
+
+.mt-1 {
+  margin-top: 1rem;
+}
+
+.mt-2 {
+  margin-top: 2rem;
+}
+
+.p-1 {
+  padding: 1rem;
+}
+
+.p-2 {
+  padding: 2rem;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Material Design overrides */
+.mat-toolbar {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.mat-card {
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border: none;
+}
+
+.mat-button, .mat-raised-button, .mat-stroked-button, .mat-flat-button {
+  border-radius: 8px;
+  font-weight: 500;
+  text-transform: none;
+}
+
+.mat-form-field {
+  margin-bottom: 1rem;
+}
+
+.mat-form-field.mat-focused .mat-form-field-label {
+  color: #1976d2;
+}
+
+.mat-dialog-container {
+  border-radius: 12px;
+  padding: 0;
+}
+
+.mat-tab-group {
+  background: transparent;
+}
+
+.mat-tab-label {
+  font-weight: 500;
+}
+
+.mat-chip {
+  border-radius: 16px;
+  font-weight: 500;
+}
+
+.mat-list-item {
+  border-radius: 8px;
+  margin-bottom: 4px;
+}
+
+.mat-menu-panel {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.mat-snack-bar-container {
+  border-radius: 8px;
+}
+
+/* Custom button styles */
+.btn-primary {
+  background-color: #1976d2;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.btn-success {
+  background-color: #4caf50;
+  color: white;
+}
+
+.btn-warning {
+  background-color: #ff9800;
+  color: white;
+}
+
+.btn-danger {
+  background-color: #f44336;
+  color: white;
+}
+
+.btn-info {
+  background-color: #2196f3;
+  color: white;
+}
+
+/* Status colors */
+.status-paid {
+  color: #4caf50;
+}
+
+.status-pending {
+  color: #ff9800;
+}
+
+.status-upcoming {
+  color: #2196f3;
+}
+
+.status-overdue {
+  color: #f44336;
+}
+
+/* Card variations */
+.card-elevated {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.card-flat {
+  box-shadow: none;
+  border: 1px solid #e0e0e0;
+}
+
+/* Loading states */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Error and success states */
+.error-message {
+  color: #f44336;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+.success-message {
+  color: #4caf50;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+.warning-message {
+  color: #ff9800;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+.info-message {
+  color: #2196f3;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+/* Form styles */
+.form-section {
+  margin-bottom: 2rem;
+}
+
+.form-section-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: #333;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 0.5rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  flex: 1;
+}
+
+/* Table styles */
+.table-container {
+  overflow-x: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.mat-table {
+  background: white;
+}
+
+.mat-header-cell {
+  font-weight: 600;
+  color: #333;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.mat-cell {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.mat-row:hover {
+  background-color: #f8f9fa;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Animation classes */
+.fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.3s ease-out;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  .hide-mobile {
+    display: none !important;
+  }
+  
+  .full-width-mobile {
+    width: 100% !important;
+  }
+  
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .mat-dialog-container {
+    margin: 1rem;
+    max-width: calc(100vw - 2rem);
+  }
+}
+
+@media (min-width: 769px) {
+  .hide-desktop {
+    display: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .mat-card {
+    margin: 0.5rem;
+  }
+  
+  .mat-toolbar {
+    padding: 0 8px;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .mat-card {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+  
+  .mat-button, .mat-raised-button {
+    display: none;
+  }
+}
+
+/* Dark theme support (for future implementation) */
+@media (prefers-color-scheme: dark) {
+  .auto-theme {
+    background-color: #303030;
+    color: #ffffff;
+  }
+  
+  .auto-theme .mat-card {
+    background-color: #424242;
+    color: #ffffff;
+  }
+}
+
+/* Focus styles for accessibility */
+.mat-button:focus,
+.mat-raised-button:focus,
+.mat-stroked-button:focus,
+.mat-flat-button:focus {
+  outline: 2px solid #1976d2;
+  outline-offset: 2px;
+}
+
+.mat-form-field-input:focus {
+  outline: none;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .mat-card {
+    border: 2px solid #000;
+  }
+  
+  .mat-button,
+  .mat-raised-button {
+    border: 2px solid currentColor;
+  }
+}

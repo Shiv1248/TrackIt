@@ -1,9 +1,10 @@
-package com.shivansh.trackit.service;
-
-import com.shivansh.trackit.repository.SubscriptionRepository;
-import com.shivansh.trackit.entity.Subscription;
+package com.shivansh.trackIt.service;
 
 import org.springframework.stereotype.Service;
+
+import com.shivansh.trackIt.entity.Subscription;
+import com.shivansh.trackIt.repository.SubscriptionRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;

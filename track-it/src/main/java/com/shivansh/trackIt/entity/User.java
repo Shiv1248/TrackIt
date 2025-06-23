@@ -1,4 +1,4 @@
-package com.shivansh.trackit.entity;
+package com.shivansh.trackIt.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;

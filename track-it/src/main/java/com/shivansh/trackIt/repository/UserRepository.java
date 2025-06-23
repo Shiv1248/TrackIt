@@ -1,7 +1,8 @@
-package com.shivansh.trackit.repository;
+package com.shivansh.trackIt.repository;
 
-import com.shivansh.trackit.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.shivansh.trackIt.entity.User;
 
 import java.util.Optional;
 

@@ -1,0 +1,126 @@
+<div class="create-expense-dialog">
+    <h2 mat-dialog-title>
+      <mat-icon>{{ isEditMode ? 'edit' : 'add' }}</mat-icon>
+      {{ isEditMode ? 'Edit Expense' : 'Add New Expense' }}
+    </h2>
+    
+    <mat-dialog-content>
+      <form [formGroup]="expenseForm" class="expense-form">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Title</mat-label>
+          <input matInput formControlName="title" placeholder="Enter expense title">
+          <mat-icon matSuffix>title</mat-icon>
+          <mat-error *ngIf="expenseForm.get('title')?.hasError('required')">
+            Title is required
+          </mat-error>
+          <mat-error *ngIf="expenseForm.get('title')?.hasError('minlength')">
+            Title must be at least 3 characters
+          </mat-error>
+        </mat-form-field>
+  
+        <div class="form-row" fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px">
+          <mat-form-field appearance="outline" fxFlex="60" fxFlex.xs="100">
+            <mat-label>Amount</mat-label>
+            <input matInput type="number" formControlName="amount" placeholder="0.00" step="0.01">
+            <span matPrefix>$&nbsp;</span>
+            <mat-error *ngIf="expenseForm.get('amount')?.hasError('required')">
+              Amount is required
+            </mat-error>
+            <mat-error *ngIf="expenseForm.get('amount')?.hasError('positiveNumber')">
+              Amount must be greater than 0
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" fxFlex="40" fxFlex.xs="100">
+            <mat-label>Status</mat-label>
+            <mat-select formControlName="status">
+              <mat-option *ngFor="let status of statuses" [value]="status.value">
+                <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8px">
+                  <mat-icon>{{ getStatusIcon(status.value) }}</mat-icon>
+                  <span>{{ status.label }}</span>
+                </div>
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+  
+        <div class="form-row" fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px">
+          <mat-form-field appearance="outline" fxFlex="50" fxFlex.xs="100">
+            <mat-label>Category</mat-label>
+            <mat-select formControlName="category">
+              <mat-option *ngFor="let category of categories" [value]="category">
+                <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8px">
+                  <mat-icon>{{ getCategoryIcon(category) }}</mat-icon>
+                  <span>{{ category }}</span>
+                </div>
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="expenseForm.get('category')?.hasError('required')">
+              Category is required
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" fxFlex="50" fxFlex.xs="100">
+            <mat-label>Date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="expenseForm.get('date')?.hasError('required')">
+              Date is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+  
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Description (Optional)</mat-label>
+          <textarea matInput formControlName="description" rows="3" 
+                    placeholder="Enter expense description"></textarea>
+          <mat-icon matSuffix>description</mat-icon>
+        </mat-form-field>
+  
+        <!-- Preview Card -->
+        <mat-card class="preview-card" *ngIf="expenseForm.valid">
+          <mat-card-header>
+            <mat-card-title>Preview</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="preview-content" fxLayout="column" fxLayoutGap="8px">
+              <div fxLayout="row" fxLayoutAlign="space-between center">
+                <span class="preview-title">{{ expenseForm.get('title')?.value }}</span>
+                <span class="preview-amount">${{ expenseForm.get('amount')?.value | number:'1.2-2' }}</span>
+              </div>
+              <div fxLayout="row" fxLayoutAlign="space-between center">
+                <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="4px">
+                  <mat-icon class="preview-icon">{{ getCategoryIcon(expenseForm.get('category')?.value) }}</mat-icon>
+                  <span>{{ expenseForm.get('category')?.value }}</span>
+                </div>
+                <mat-chip [color]="expenseForm.get('status')?.value === 'paid' ? 'primary' : 
+                                   expenseForm.get('status')?.value === 'pending' ? 'warn' : 'accent'" 
+                         selected class="preview-status">
+                  {{ expenseForm.get('status')?.value | titlecase }}
+                </mat-chip>
+              </div>
+              <div *ngIf="expenseForm.get('description')?.value" class="preview-description">
+                {{ expenseForm.get('description')?.value }}
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </form>
+    </mat-dialog-content>
+  
+    <mat-dialog-actions align="end">
+      <button mat-button (click)="onCancel()" [disabled]="isLoading">Cancel</button>
+      <button mat-raised-button color="primary" (click)="onSubmit()" 
+              [disabled]="!expenseForm.valid || isLoading">
+        <span *ngIf="!isLoading">
+          <mat-icon>{{ isEditMode ? 'save' : 'add' }}</mat-icon>
+          {{ isEditMode ? 'Update Expense' : 'Create Expense' }}
+        </span>
+        <span *ngIf="isLoading">
+          <mat-spinner diameter="20" style="display: inline-block; margin-right: 8px;"></mat-spinner>
+          {{ isEditMode ? 'Updating...' : 'Creating...' }}
+        </span>
+      </button>
+    </mat-dialog-actions>
+  </div>
